@@ -1,2 +1,3 @@
-# smartschool-api
-PHP Class to easily communicate to the Smartschool API
+# Smartschool API Class
+
+PHP Class to easily communicate with the Smartschool API
