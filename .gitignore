@@ -1,0 +1,7 @@
+## Ignore test files
+
+# User-specific files
+config.php
+
+# test folder
+[Tt]est/
