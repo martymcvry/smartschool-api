@@ -1,0 +1,1378 @@
+<html>
+<head>
+<link href="https://static3.smart-school.net/smsc/resources/jqueryui/1.12.1/jquery-ui.min.rev-9be6d7f5c3.css" rel="stylesheet">
+<link href="https://static5.smart-school.net/production/Topnav/main.rev-3ab823755f.css" rel="stylesheet">
+<link href="https://static3.smart-school.net/modules/Manual/dist/main-built.rev-d2a29cdde0.css" rel="stylesheet">
+<style type="text/css">/* TREE LAYOUT */ .tree ul { margin:0 0 0 5px; padding:0 0 0 0; list-style-type:none; } .tree li { display:block; min-height:18px; line-height:18px; padding:0 0 0 15px; margin:0 0 0 0; /* Background fix */ clear:both; } .tree li ul { display:none; } .tree li a, .tree li span { display:inline-block;line-height:16px;height:16px;color:black;white-space:nowrap;text-decoration:none;padding:1px 4px 1px 4px;margin:0; } .tree li a:focus { outline: none; } .tree li a input, .tree li span input { margin:0;padding:0 0;display:inline-block;height:12px !important;border:1px solid white;background:white;font-size:10px;font-family:Verdana; } .tree li a input:not([class="xxx"]), .tree li span input:not([class="xxx"]) { padding:1px 0; } /* FOR DOTS */ .tree .ltr li.last { float:left; } .tree > ul li.last { overflow:visible; } /* OPEN OR CLOSE */ .tree li.open ul { display:block; } .tree li.closed ul { display:none !important; } /* FOR DRAGGING */ #jstree-dragged { position:absolute; top:-10px; left:-10px; margin:0; padding:0; } #jstree-dragged ul ul ul { display:none; } #jstree-marker { padding:0; margin:0; line-height:5px; font-size:1px; overflow:hidden; height:5px; position:absolute; left:-45px; top:-30px; z-index:1000; background-color:transparent; background-repeat:no-repeat; display:none; } #jstree-marker.marker { width:45px; background-position:-32px top; } #jstree-marker.marker_plus { width:5px; background-position:right top; } /* BACKGROUND DOTS */ .tree li li { overflow:hidden; } .tree > .ltr > li { /*display:table;*/ } /* ICONS */ .tree ul ins { display:inline-block; text-decoration:none; width:16px; height:16px; } .tree .ltr ins { margin:0 4px 0 0px; } </style>
+</head>
+<body>
+<div class="kenniscontent" id="kenniscontent" style="width: 100%;"><!-- wikipage start -->
+                    
+
+<h1 class="sectionedit1" id="webservices">Webservices</h1>
+<div class="level1">
+<ul>
+<li class="level1 node"><div class="li"> <a href="#instellingen_webservices" title="handleiding:algemene_configuratie:smartschool-api ↵" class="wikilink1">Instellingen webservices</a></div>
+<ul>
+<li class="level2"><div class="li"> <a href="#globaal_wachtwoord" title="handleiding:algemene_configuratie:smartschool-api ↵" class="wikilink1">Globaal wachtwoord</a></div>
+</li>
+<li class="level2"><div class="li"> <a href="#profielen_met_beperkte_toegang" title="handleiding:algemene_configuratie:smartschool-api ↵" class="wikilink1">Profielen met beperkte toegang</a></div>
+</li>
+</ul>
+</li>
+<li class="level1 node"><div class="li"> <a href="#webservices_v3_soap" title="handleiding:algemene_configuratie:smartschool-api ↵" class="wikilink1">Webservices V3 (SOAP)</a></div>
+<ul>
+<li class="level2"><div class="li"> <a href="#url_s" title="handleiding:algemene_configuratie:smartschool-api ↵" class="wikilink1">URL's</a></div>
+</li>
+<li class="level2"><div class="li"> <a href="#voorbeelden_van_toepassingen_in_php_en_c" title="handleiding:algemene_configuratie:smartschool-api ↵" class="wikilink1">Voorbeelden van toepassingen in PHP en C#</a></div>
+</li>
+<li class="level2"><div class="li"> <a href="#overzicht_van_de_methoden" title="handleiding:algemene_configuratie:smartschool-api ↵" class="wikilink1">Overzicht van de methoden</a></div>
+</li>
+<li class="level2"><div class="li"> <a href="#detail_van_de_methoden" title="handleiding:algemene_configuratie:smartschool-api ↵" class="wikilink1">Detail van de methoden</a></div>
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+
+<h2 class="sectionedit2" id="instellingen_webservices">Instellingen webservices</h2>
+<div class="level2">
+
+<p>
+In dit dialoogvenster (Algemene configuratie &gt; Webservices) kan je volgende opties instellen:
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong>Wachtwoord</strong>: Dit is het globaal wachtwoord dat toegang geeft tot alle methodes (string $accesscode). Je kan het wachtwoord tijdelijk zichtbaar maken door op het oogje naast het wachtwoord te klikken. Via het kopieer-icoon kan je het wachtwoord naar je klembord kopiëren.</div>
+</li>
+<li class="level1"><div class="li"> <strong>Doelgroep</strong>: De groep waarin de nieuw aangemaakte gebruikers terechtkomen.</div>
+</li>
+<li class="level1"><div class="li"> <strong>Uniek veld</strong>: Kies gebruikersnaam of intern nummer. Afhankelijk van deze keuze zal Smartschool inkomende requests behandelen (string $userIdentifier).</div>
+</li>
+</ul>
+
+<p>
+Het <a href="#globaal_wachtwoord" title="handleiding:algemene_configuratie:smartschool-api ↵" class="wikilink1">globaal wachtwoord</a> verleent aan een externe toepassing automatisch toegang tot alle methodes. Dat is zeker niet altijd gewenst! Maak bij voorkeur <a href="#profielen_met_beperkte_toegang" title="handleiding:algemene_configuratie:smartschool-api ↵" class="wikilink1">een profiel aan met een apart wachtwoord voor beperkte toegang</a> tot methodes.
+</p>
+
+<p>
+<img src="https://www.smartschool.be/kenniscentrum/lib/exe/fetch.php?media=handleiding:algemene_configuratie:webservices-globaal.png" class="media" alt="">
+</p>
+
+</div>
+
+<h3 class="sectionedit3" id="globaal_wachtwoord">Globaal wachtwoord</h3>
+<div class="level3">
+<ol>
+<li class="level1"><div class="li"> Kies in 'Algemene configuratie' voor 'Webservices'.</div>
+</li>
+<li class="level1"><div class="li"> Bekijk of wijzig het globaal wachtwoord bij 'wachtwoord' en klik eventueel op Opslaan.</div>
+</li>
+</ol>
+
+</div>
+
+<h3 class="sectionedit4" id="profielen_met_beperkte_toegang">Profielen met beperkte toegang</h3>
+<div class="level3">
+<ol>
+<li class="level1"><div class="li"> Kies in 'Algemene configuratie' voor 'Webservices'.</div>
+</li>
+<li class="level1"><div class="li"> Klik op 'Profiel toevoegen' om een nieuw profiel aan te maken.</div>
+</li>
+<li class="level1"><div class="li"> Vul de naam van het profiel in en duidt aan tot welke methoden dit profiel toegang heeft.</div>
+</li>
+<li class="level1"><div class="li"> Klik op Opslaan.</div>
+</li>
+</ol>
+
+<p>
+Bezorg het wachtwoord van dit profiel aan de persoon die de externe toepassing beheert. Met dit wachtwoord heeft deze toepassing enkel toegang tot de door jou gekozen methodes.
+</p>
+
+<p>
+<img src="https://www.smartschool.be/kenniscentrum/lib/exe/fetch.php?media=handleiding:algemene_configuratie:webservices-profiel01.png" class="media" alt="">
+</p>
+
+</div>
+
+<h2 class="sectionedit5" id="webservices_v3_soap">Webservices V3 (SOAP)</h2>
+<div class="level2">
+
+<p>
+Het is mogelijk om zelf aan de slag te gaan met de webservices van Smartschool. Hieronder vind je alle informatie van de verschillende methoden terug.
+</p>
+
+</div>
+
+<h3 class="sectionedit6" id="url_s">URL's</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> <a href="https://school.smartschool.be/Webservices/V3" class="urlextern" target="_blank" title="https://school.smartschool.be/Webservices/V3" rel="nofollow noopener">https://school.smartschool.be/Webservices/V3</a></div>
+</li>
+<li class="level1"><div class="li"> <a href="https://school.smartschool.be/Webservices/V3?wsdl" class="urlextern" target="_blank" title="https://school.smartschool.be/Webservices/V3?wsdl" rel="nofollow noopener">https://school.smartschool.be/Webservices/V3?wsdl</a></div>
+</li>
+</ul>
+
+</div>
+
+<h3 class="sectionedit7" id="voorbeelden_van_toepassingen_in_php_en_c">Voorbeelden van toepassingen in PHP en C#</h3>
+<div class="level3">
+
+<p>
+We bieden enkele concrete voorbeelden aan van programmacode in C# en PHP waarbij de webservices en OAuth gebruikt worden:
+</p>
+<ul>
+<li class="level1"><div class="li"> C#-toepassing om het wachtwoord en de status van een gebruiker te wijzigen.</div>
+</li>
+<li class="level1"><div class="li"> PHP-toepassing om het wachtwoord van een gebruiker te wijzigen.</div>
+</li>
+<li class="level1"><div class="li"> PHP-toepassing voor het bestellen van broodjes, authenticatie met behulp van OAuth.</div>
+</li>
+</ul>
+
+<p>
+De broncode van alle toepassingen kan je <a href="https://www.smartschool.be/pdf/Smartschool-API-voorbeelden.zip" class="urlextern" target="_blank" title="https://www.smartschool.be/pdf/Smartschool-API-voorbeelden.zip" rel="nofollow noopener">downloaden</a> ter inspiratie. Het is niet de bedoeling dat je deze toepassingen effectief gebruikt. Ze zijn bedoeld als aanzet en voorbeeld.
+</p>
+
+</div>
+
+<h3 class="sectionedit8" id="overzicht_van_de_methoden">Overzicht van de methoden</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> string <strong>addCourse</strong> (string $accesscode, string $coursename, string $coursedesc, int $visibility)<br>
+<em>int $visibilityis is optioneel</em></div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>addCourseStudents</strong> (string $accesscode, string $coursename, string $coursedesc, string $groupIds)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>addCourseTeacher</strong> (string $accesscode, string $coursename, string $coursedesc, string $internnummer, string $userlist)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>changeGroupOwners</strong> (string $accesscode, $code, $userlist)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>changeInternNumber</strong> (string $accesscode, $internNumber, $newUsername)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>changeUsername</strong> (string $accesscode, $username, $newInternNumber)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>checkStatus</strong> (string $accesscode, string $uuid)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>clearGroup</strong> (string $accesscode, string $group, string $officialDate)<br>
+<em>string $officialDate is optioneel</em></div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>deactivateTwoFactorAuthentication</strong> (string $accesscode, string $userIdentifier, integer $accountType)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>delClass</strong> (string $accesscode, string $code)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>delUser</strong> (string $accesscode, string $userIdentifier, string $officialDate)<br>
+<em>string $officialDate is optioneel</em></div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>forcePasswordReset</strong> (string $accesscode, string $userIdentifier, string $accountType)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>getAbsents</strong> (string $accesscode, string $userIdentifier, string $schoolYear)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>getAbsentsByDate</strong> (string $accesscode, string $date)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>getAbsentsWithAliasByDate</strong> (string $accesscode, string $date)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>getAbsentsWithInternalNumberByDate</strong> ($accesscode, string $date)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>getAbsentsWithUsernameByDate</strong> ($accesscode, string $date)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>getAbsentsByDateAndGroup</strong> ($accesscode, string $date, string $code)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>getAccountPhoto</strong> (string $accesscode, string $userIdentifier)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>getAllAccounts</strong> (string $accesscode, string $code, string $recursive)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>getAllAccountsExtended</strong> (string $accesscode, string $code, string $recursive)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>getAllGroupsAndClasses</strong> (string $accesscode)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>getClassList</strong> (string $accesscode)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>getClassListJson</strong> (string $accesscode)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>getClassTeachers</strong> (string $accesscode, boolean $getAllOwners)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>getCourses</strong> (string $accesscode)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>getSchoolyearDataOfClass</strong> (string $accesscode, string $classCode)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>getSkoreClassTeacherCourseRelation</strong> (string $accesscode)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>getStudentCareer</strong> (string $accesscode, string $userIdentifier)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>getUserDetails</strong> (string $accesscode, string $userIdentifier)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>getUserDetailsByNumber</strong> (string $accesscode, string $number)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>getUserDetailsByUsername</strong> (string $accesscode, string $username)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>getUserOfficialClass</strong> (string $accesscode, string $userIdentifier, string $date)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>removeCoAccount</strong> (string $accesscode, string $userIdentifier, integer $accountType)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>removeUserFromGroup</strong> (string $accesscode, string $userIdentifier, string $class, string $officialDate)<br>
+<em>string $officialDate is optioneel</em></div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>replaceInum</strong> (string $accesscode, string $oldInum, string $newInum)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>returnCsvErrorCodes</strong> </div>
+</li>
+<li class="level1"><div class="li"> string <strong>returnJsonErrorCodes</strong></div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>saveClass</strong> (string $accesscode, string $name, string $desc, string $code, string $parent, string $untis, string $instituteNumber, string $adminNumber, string $schoolYearDate)<br>
+<em>string $instituteNumber, string $adminNumber en string $schoolYearDate zijn optioneel</em></div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>saveClassList</strong> (string $accesscode, string $serializedList)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>saveClassListJson</strong> (string $accesscode, string $jsonList)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>saveGroup</strong> (string $accesscode, string $name, string $desc, string $code, string $parent, string $untis)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>savePassword</strong> (string $accesscode, string $userIdentifier, string $password, integer $accountType)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>saveSchoolyearDataOfClass</strong> (string $accesscode, string $classCode, string $date, string $instituteNumber, string $administrativeGroupNumber, string $residence, string $domain)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>saveSignature</strong> (string $accesscode, string $userIdentifier, integer $accountType, string $signature)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>saveUser</strong> (string $accesscode, string $internnumber, string $username, string $passwd1, string $passwd2, string $passwd3, string $name, string $surname, string $extranames, string $initials, string $sex, string $birthday, string $birthplace, string $birthcountry, string $address, string $postalCode, string $location, string $country, string $email, string $mobilephone, string $homephone, string $fax, string $prn, string $stamboeknummer, string $basisrol, string $untis)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>saveUserParameter</strong> (string $accesscode, string $userIdentifier, string $paramName, string $paramValue)<br>
+string $paramName werd uitgebreid met mogelijkheden voor co-accounts</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>saveUserToClass</strong> (string $accesscode, string $userIdentifier, string $class, string $officialDate)<br>
+<em>string $officialDate is optioneel</em></div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>saveUserToClasses</strong> (string $accesscode, string $userIdentifier, string $csvList)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>saveUserToClassesAndGroups</strong> (string $accesscode, string $userIdentifier, string $csvList, integer $keepOld)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>sendMsg</strong> (string $accesscode, string $userIdentifier, string $title, string $body, string $senderIdentifier, mixed $attachments, integer $coaccount, boolean $copyToLVS = false)<br>
+<em>string $senderIdentifier, array $attachments, integer $coaccount, boolean $copyToLVS = false zijn optioneel</em></div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>setAccountPhoto</strong> (string $accesscode, string $userIdentifier, string $photo)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>setAccountStatus</strong> (string $accesscode, string $userIdentifier, mixed $accountStatus)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>startSkoreSync</strong> (string $accesscode)</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>unregisterStudent</strong> (string $accesscode, string $userIdentifier, string $officialDate)<br>
+<em>string $officialDate is optioneel</em></div>
+</li>
+</ul>
+
+</div>
+
+<h3 class="sectionedit9" id="detail_van_de_methoden">Detail van de methoden</h3>
+<div class="level3">
+
+</div>
+
+<h4 id="addcourse">addCourse</h4>
+<div class="level4">
+
+<p>
+Met deze methode is het mogelijk om een vakken aan te maken in Smartschool. Het XML-bestand heeft 3 parameters aan boord:
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$coursename</strong>: Vaknaam</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$coursedesc</strong>: Vakomschrijving</div>
+</li>
+<li class="level1"><div class="li"> int <strong>$visibility</strong>: Zichtbaarheid (optioneel: '1' = zichtbaar (default) of '0' = niet zichtbaar)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="addcoursestudents">addCourseStudents</h4>
+<div class="level4">
+
+<p>
+Met deze methode is het mogelijk om bepaalde klassen toe te voegen aan een bepaald vak. Het XML-bestand heeft 4 parameters aan boord:
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$coursename</strong>: Vaknaam</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$coursedesc</strong>: Vakomschrijving </div>
+</li>
+<li class="level1"><div class="li"> string <strong>$groupIds</strong>: CSV-lijst met unieke klas- of groepscode(s)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="addcourseteacher">addCourseTeacher</h4>
+<div class="level4">
+
+<p>
+Met deze methode is het mogelijk om een vakleerkracht en co-leerkrachten toe te voegen aan een bepaald vak. Het XML-bestand heeft 5 parameters aan boord:
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$coursename</strong>: Vaknaam</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$coursedesc</strong>: Vakomschrijving </div>
+</li>
+<li class="level1"><div class="li"> string <strong>$internnummer</strong>: Uniek veld gebruiker</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userlist</strong>: CSV-lijst met uniek veld gebruiker</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="changegroupowners">changeGroupOwners</h4>
+<div class="level4">
+
+<p>
+Met deze methode is het mogelijk om de klastitularissen van een klas te wijzigen.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$code</strong>: Unieke klas- of groepscode</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userlist</strong>: CSV-lijst met uniek veld gebruiker</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="changeinternnumber">changeInternNumber</h4>
+<div class="level4">
+
+<p>
+Met deze methode is het mogelijk om het intern nummer van een gebruiker te wijzigen waarbij de gebruikersnaam als sleutelveld fungeert.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$username</strong>: Gebruikersnaam</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$newInternNumber</strong>: Nieuw intern nummer</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="changeusername">changeUsername</h4>
+<div class="level4">
+
+<p>
+Met deze methode is het mogelijk om de gebruikersnaam van een gebruiker te wijzigen waarbij het intern nummer als sleutelveld fungeert.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$internNumber</strong>: Intern nummer</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$newUsername</strong>: Nieuwe gebruikersnaam</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="checkstatus">checkStatus</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan de status van de synchronisatieopdracht van de methode startSkoreSync opgevraagd worden.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$uuid</strong>: De unieke code van de synchronisatieopdracht van de methode startSkoreSync</div>
+</li>
+</ul>
+
+<p>
+Deze methode geeft de status van de synchronisatieopdracht terug:
+</p>
+<ul>
+<li class="level1"><div class="li"> no_status: er is voor de opgegeven UUID geen opdracht gevonden</div>
+</li>
+<li class="level1"><div class="li"> busy: de opdracht is bezig</div>
+</li>
+<li class="level1"><div class="li"> done: de opdracht is voltooid</div>
+</li>
+<li class="level1"><div class="li"> error: de opdracht is niet voltooid door een fout tijdens de opdracht</div>
+</li>
+</ul>
+
+</div>
+
+<h5 id="cleargroup">clearGroup</h5>
+<div class="level5">
+
+<p>
+Deze methode verwijdert alle gebruikers uit een groep.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$group</strong>: Uniek klas- of groepscode</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$officialDate</strong>: Officiële datum (optioneel: zonder officiële datum dient de eventuele klasbeweging in Smartschool te worden bevestigd; formaat: YYYY-MM-DD)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="deactivatetwofactorauthentication">deactivateTwoFactorAuthentication</h4>
+<div class="level4">
+
+<p>
+Met deze methode is het mogelijk om dubbele authenticatie te deactiveren voor een gebruiker. Het XML-bestand heeft 3 parameters aan boord:
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker</div>
+</li>
+<li class="level1"><div class="li"> integer <strong>$accountType</strong>: Type account ('0' = hoofdaccount, '1' = co-account 1 of '2' = co-account 2 …)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="delclass">delClass</h4>
+<div class="level4">
+
+<p>
+Met deze methode kunnen groepen, klassen en officiële klassen uit Smartschool worden verwijderd. Deze methode kan aangeroepen worden met 1 extra parameter: $code. Dit volstaat om de groep te identificeren. De leden in deze groep worden niet uit Smartschool verwijderd.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$code</strong>: Unieke klas- of groepscode</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="deluser">delUser</h4>
+<div class="level4">
+
+<p>
+Deze methode verwijdert de opgegeven gebruiker uit Smartschool. Volgende gegevens zijn vereist:
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$officialDate</strong>: Officiële datum (optioneel: zonder officiële datum dient de klasbeweging in Smartschool te worden bevestigd; formaat: YYYY-MM-DD)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="forcepasswordreset">forcePasswordReset</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan je voor een bepaalde gebruiker aangeven dat het wachtwoord verplicht gewijzigd dient te worden bij de eerstvolgende aanmelding.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker</div>
+</li>
+<li class="level1"><div class="li"> integer <strong>$accountType</strong>: Type account ('0' = hoofdaccount, '1' = co-account 1 of '2' = co-account 2 …)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getabsents">getAbsents</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan je de officiële afwezigheden (voor- en namiddag) van een leerling van een bepaald schooljaar ophalen. Deze methode levert een JSON-object.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$schoolYear</strong>: Het startjaar van het schooljaar (bv. '2013' voor het schooljaar 2013-2014)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getabsentsbydate">getAbsentsByDate</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan je de officiële afwezigheden (voor- en namiddag) van alle leerlingen van een bepaalde dag ophalen. Deze methode levert een JSON-object.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$date</strong>: Datum (formaat: YYYY-MM-DD)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getabsentswithaliasbydate">getAbsentsWithAliasByDate</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan je de officiële afwezigheden (voor- en namiddag) inclusief de aliassen van alle leerlingen van een bepaalde dag ophalen. Deze methode levert een JSON-object.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$date</strong>: Datum (formaat: YYYY-MM-DD)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getabsentswithinternalnumberbydate">getAbsentsWithInternalNumberByDate</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan je de officiële afwezigheden (voor- en namiddag) van alle leerlingen van een bepaalde dag ophalen. Deze methode levert een JSON-object.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$date</strong>: Datum (formaat: YYYY-MM-DD)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getabsentswithusernamebydate">getAbsentsWithUsernameByDate</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan je de officiële afwezigheden (voor- en namiddag) van alle leerlingen van een bepaalde dag ophalen. Deze methode levert een JSON-object.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$date</strong>: Datum (formaat: YYYY-MM-DD)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getabsentsbydateandgroup">getAbsentsByDateAndGroup</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan je de officiële afwezigheden (voor- en namiddag) van alle leerlingen van een bepaalde klas en dag ophalen. Deze methode levert een JSON-object. 
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$date</strong>: Datum (formaat: YYYY-MM-DD)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$code</strong>: Unieke klas- of groepscode van de op te halen groep</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getaccountphoto">getAccountPhoto</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan je de foto van de leerling ophalen. Deze methode levert een base64 encoded string.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getallaccounts">getAllAccounts</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan je voornaam, naam, gebruikersnaam, intern nummer en het klasnummer van de officiële klas ophalen van gebruikers in een bepaalde groep. Deze methode levert een in base64 geëncodeerde XML.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$code</strong>: Unieke klas- of groepscode van de op te halen groep</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$recursive</strong>: Subgroepen ook ophalen ('0' indien niet vereist of '1' indien wel vereist)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getallaccountsextended">getAllAccountsExtended</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan je alle profielvelden (behalve wachtwoorden en profielfoto), het klasnummer van de officiële klas, de groepslidmaatschappen en de laatste aanmeldingen ophalen van gebruikers (hoofd- en co-accounts) in een bepaalde groep. Deze methode levert een JSON-object.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$code</strong>: Unieke klas- of groepscode van de op te halen groep</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$recursive</strong>: Subgroepen ook ophalen ('0' indien niet vereist of '1' indien wel vereist)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getallgroupsandclasses">getAllGroupsAndClasses</h4>
+<div class="level4">
+
+<p>
+Deze methode vraagt alle groepen en klassen van het Smartschoolplatform op. Deze methode levert een in base64 geëncodeerde XML met de klas- of groepsnaam, de omschrijving, de unieke klas- of groepscode en het type.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getclasslist">getClassList</h4>
+<div class="level4">
+
+<p>
+Deze methode vraagt een lijst met alle klassen op. Deze methode levert een geserialiseerde array met de klasnaam, de omschrijving, de zichtbaarheid en de unieke klascode. Er wordt ook aangegeven indien het al dan niet een officiële klas is.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getclasslistjson">getClassListJson</h4>
+<div class="level4">
+
+<p>
+Deze methode vraagt een lijst met alle klassen op. Deze methode levert een JSON-array met de klasnaam, de omschrijving, de zichtbaarheid en de unieke klascode. Er wordt ook aangegeven indien het al dan niet een officiële klas is.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getclassteachers">getClassTeachers</h4>
+<div class="level4">
+
+<p>
+Deze methode vraagt een lijst van de klastitularissen op. Deze methode levert een JSON-object.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> boolean <strong>$getAllOwners</strong>: Hiermee is het mogelijk om alle klastitularissen op te vragen (if true) en niet enkel de eerste (default false).</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getcourses">getCourses</h4>
+<div class="level4">
+
+<p>
+Deze methode vraagt alle vakken van het Smartschoolplatform op. Deze methode levert een in base64 geëncodeerde XML.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getschoolyeardataofclass">getSchoolyearDataOfClass</h4>
+<div class="level4">
+
+<p>
+Deze methode vraagt alle schooljaargegevens op van de opgegeven klas. 
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$classCode</strong>: Unieke klas- of groepscode</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getskoreclassteachercourserelation">getSkoreClassTeacherCourseRelation</h4>
+<div class="level4">
+
+<p>
+Deze methode vraagt een lijst met de koppeling tussen klassen, leerkrachten, vakken en leerlinginformatie (naam, voornaam, gebruikersnaam, intern nummer, stamnummer …) uit Skore weer (koppeling van de puntenboeken). Deze methode levert een XML-bestand.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getstudentcareer">getStudentCareer</h4>
+<div class="level4">
+
+<p>
+Deze methode vraagt de volledige <a href="javascript:openPage('handleiding:algemene_configuratie:schoolloopbaan');" class="wikilink1" title="handleiding:algemene_configuratie:schoolloopbaan">schoolloopbaan</a> van de leerling op. Deze methode levert een JSON-object.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getuserdetails">getUserDetails</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan je alle profielvelden (behalve wachtwoorden en profielfoto) en de groepslidmaatschappen ophalen van een specifieke gebruiker (hoofd- en co-accounts). Deze methode levert een JSON-object.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getuserdetailsbynumber">getUserDetailsByNumber</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan je alle profielvelden (behalve wachtwoorden en profielfoto) en de groepslidmaatschappen ophalen van een specifieke gebruiker (hoofd- en co-accounts). Deze methode levert een JSON-object.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$number</strong>: Intern nummer</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getuserdetailsbyusername">getUserDetailsByUsername</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan je alle profielvelden (behalve wachtwoorden en profielfoto) en de groepslidmaatschappen ophalen van een specifieke gebruiker (hoofd- en co-accounts). Deze methode levert een JSON-object.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$username</strong>: Gebruikersnaam</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="getuserofficialclass">getUserOfficialClass</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan je controleren in welke officiële klas een bepaalde leerling zit op een bepaalde dag.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$date</strong>: Datum (optioneel: zonder datum wordt de huidige dag opgevraagd; formaat: YYYY-MM-DD)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="removecoaccount">removeCoAccount</h4>
+<div class="level4">
+
+<p>
+Via deze methode is het mogelijk om een bepaalde co-account van een gebruiker te verwijderen.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker</div>
+</li>
+<li class="level1"><div class="li"> integer <strong>$accountType</strong>: Type account ('1' = co-account 1 of '2' = co-account 2 …)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="removeuserfromgroup">removeUserFromGroup</h4>
+<div class="level4">
+
+<p>
+Met deze methode is het mogelijk een gebruiker uit een specifieke groep te verwijderen.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Webservices toegangscode</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$class</strong>: Unieke klas- of groepscode</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$officialDate</strong>: Officiële datum klasbeweging (optioneel)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="replaceinum">replaceInum</h4>
+<div class="level4">
+
+<p>
+Via deze methode kan je het internnummer van een bepaalde gebruiker vervangen.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$oldInum</strong>: Oud intern nummer</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$newInum</strong>: Nieuw intern nummer</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="returncsverrorcodes">returnCsvErrorCodes</h4>
+<div class="level4">
+
+<p>
+Deze methode haalt alle errorcodes in een CSV-bestand op.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>returnCsvErrorCodes ()</strong></div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="returnjsonerrorcodes">returnJsonErrorCodes</h4>
+<div class="level4">
+
+<p>
+Deze methode haalt alle errorcodes in een JSON-object op.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>returnJsonErrorCodes ()</strong></div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="saveclass">saveClass</h4>
+<div class="level4">
+
+<p>
+Met deze methode is het enerzijds mogelijk om klassen en officiële klassen aan te maken of te wijzigen in Smartschool. Het is evenwel niet mogelijk om de klasnaam van bestaande klassen en officiële klassen te wijzigen. Het xml-bestand heeft 6 parameters en 3 optionele parameters aan boord.
+</p>
+
+<p>
+Indien er nog geen (officiële) klas voorkomt met de aangeleverde identificatie string ($name) zal Smartschool een nieuwe (officiële) klas aanmaken. Bestaat er echter wel reeds een (officiële) klas met de identificatie string dan zullen de bestaande parameters in Smartschool worden aangepast.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$name</strong>: Klas- of groepsnaam</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$desc</strong>: Omschrijving</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$code</strong>: Unieke klas- of groepscode</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$parent</strong>: Unieke klas-of groepscode van parent groep (leeg of '0' voor hoogste niveau)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$untis</strong>: Koppelingsveld schoolagenda</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$instituteNumber</strong>: Instellingsnummer (optioneel: enkel voor het aanmaken van een officiële klas)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$adminNumber</strong>: Nummer van de administratieve groep (optioneel: enkel voor het aanmaken van een officiële klas)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$schoolYearDate</strong>: Dit past het instellingsnummer en nummer van de administratieve groep aan voor het doorgegeven schooljaar (indien niet meegegeven wordt dit aangepast voor het huidige schooljaar)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="saveclasslist">saveClassList</h4>
+<div class="level4">
+
+<p>
+Via deze methode update je een lijst van klassen.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$serializedList</strong>: Een geserialiseerde array met alle klassen</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="saveclasslistjson">saveClassListJson</h4>
+<div class="level4">
+
+<p>
+Via deze methode update je een lijst van klassen.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$jsonList</strong>: Een JSON-array met alle klassen</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="savegroup">saveGroup</h4>
+<div class="level4">
+
+<p>
+Met deze methode is het enerzijds mogelijk om groepen aan te maken of te wijzigen in Smartschool. Het is evenwel niet mogelijk om de groepsnaam van bestaande groepen te wijzigen. Het xml-bestand heeft 6 parameters aan boord.
+</p>
+
+<p>
+Indien er nog geen groep voorkomt met de aangeleverde identificatie string ($name) zal Smartschool een nieuwe groep aanmaken. Bestaat er echter wel reeds een groep met de identificatie string dan zullen de bestaande parameters in Smartschool worden aangepast.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$name</strong>: Klas- of groepsnaam</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$desc</strong>: Omschrijving</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$code</strong>: Unieke klas- of groepscode</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$parent</strong>: Unieke klas-of groepscode van parent groep (leeg of '0' voor hoogste niveau)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$untis</strong>: Koppelingsveld schoolagenda</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="savepassword">savePassword</h4>
+<div class="level4">
+
+<p>
+Met deze methode stel je het wachtwoord voor een bepaalde hoofd- of co-account in.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$password</strong>: Wachtwoord of wachtzin<br>
+<a href="javascript:openPage('handleiding:profiel:gebuikersnaam-wachtwoord#wachtwoord_vs_wachtzin');" class="wikilink1" title="handleiding:profiel:gebuikersnaam-wachtwoord">Lees hier alle informatie over de voorwaarden van een wachtwoord of wachtzin.</a></div>
+</li>
+<li class="level1"><div class="li"> integer <strong>$accountType</strong>: Type account ('0' = hoofdaccount, '1' = co-account 1 of '2' = co-account 2 …)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="saveschoolyeardataofclass">saveSchoolyearDataOfClass</h4>
+<div class="level4">
+
+<p>
+Met deze methode wijzig je de schooljaargegevens van de opgegeven klas. 
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$classCode</strong>: Unieke klas- of groepscode</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$date</strong>: Datum (formaat: YYYY-MM-DD)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$instituteNumber</strong>: Instellingsnummer</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$administrativeGroupNumber</strong>:  Nummer administratieve groep</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$residence</strong>: Vestigingsplaats</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$domain</strong>: Studiedomein</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="savesignature">saveSignature</h4>
+<div class="level4">
+
+<p>
+Met deze methode stel je de handtekening (Berichten) voor een bepaalde hoofd- of co-account in.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker</div>
+</li>
+<li class="level1"><div class="li"> integer <strong>$accountType</strong>: Type account ('0' = hoofdaccount, '1' = co-account 1 of '2' = co-account 2 …)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$signature</strong>: Handtekening</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="saveuser">saveUser</h4>
+<div class="level4">
+
+<p>
+Voegt een gebruiker toe of wijzigt een bestaande gebruiker.
+</p>
+
+<p>
+Als de saveUser methode wordt aangeroepen dan wordt het ingesteld uniek veld (userIdentifier) gecontroleerd. Indien er nog geen account bestaat met het ingesteld uniek veld dan zal er een nieuwe account worden toegevoegd. Bestaat er echter wel reeds een account met het ingesteld uniek veld dan worden de gegevens van deze account geüpdatet met de meegeleverde gegevens.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$internnumber</strong>: Uniek veld gebruiker</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$username</strong>: Gebruikersnaam (minstens 2 karakters)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$passwd1</strong>: Wachtwoord hoofdaccount<br>
+Voor nieuwe gebruikers is het verplicht om dit wachtwoord op te geven. Bij bestaande gebruikers is het mogelijk om deze string leeg te laten, zo zal het wachtwoord van deze gebruiker niet gewijzigd worden. <br>
+<a href="javascript:openPage('handleiding:profiel:gebuikersnaam-wachtwoord#wachtwoord_vs_wachtzin');" class="wikilink1" title="handleiding:profiel:gebuikersnaam-wachtwoord">Lees hier alle informatie over de voorwaarden van een wachtwoord of wachtzin.</a></div>
+</li>
+<li class="level1"><div class="li"> string <strong>$passwd2</strong>: Wachtwoord co-account (optioneel)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$passwd3</strong>: Wachtwoord tweede co-account (optioneel)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$name</strong>: Voornaam (minstens 1 karakter)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$surname</strong>: Achternaam (minstens 1 karakter)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$extranames</strong>: Extra voornamen (optioneel)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$initials</strong>: Initialen (optioneel)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$sex</strong>: Geslacht: 'm' of 'v' (optioneel)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$birthday</strong>: Geboortedatum (optioneel; formaat YYYY-MM-DD of DD-MM-YYYY)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$birthplace</strong>: Geboorteplaats (optioneel)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$birthcountry</strong>: Geboorteland (optioneel)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$address</strong>: Adres (optioneel) <br>
+Het huisnummer en busnummer kunnen meegeleverd worden in de '$address' parameter. Wanneer het adres in de vorm &lt;straatnaam&gt; spatie &lt;huisnummer&gt; spatie 'bus' spatie &lt;busnummer&gt; wordt aangeboden zal de saveUser service dit herkennen de gegevens in de juiste databankvelden invoeren. Bv.: Kerkstraat 22 of Kerkstraat 22 bus 1. Naast het woord 'bus' wordt ook een schuine streep gebruikt om huisnummer van busnummer te scheiden. Kerkstraat 22/1 wordt dus Kerkstraat 22 bus 1.</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$postalcode</strong>: Postcode (optioneel)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$location</strong>: Stad/Gemeente (optioneel)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$country</strong>: Land (optioneel)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$email</strong>: E-mailadres (optioneel)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$mobilephone</strong>: Mobiel nummer (optioneel)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$homephone</strong>: Telefoonnummer (optioneel)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$fax</strong>: Fax (optioneel)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$prn</strong>: Rijksregisternummer (optioneel)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$stamboeknummer</strong>: Stamnummer (optioneel)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$basisrol</strong>: Basisrol: 'leerling', 'leerkracht', 'directie' of 'andere' (verplicht)</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$untis</strong>: Koppelingsveld schoolagenda (optioneel)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="saveuserparameter">saveUserParameter</h4>
+<div class="level4">
+
+<p>
+Met deze methode kunnen de onderstaande velden uit het profiel worden ingevuld:
+</p>
+<ul>
+<li class="level1"><div class="li"> eigen profielvelden</div>
+</li>
+<li class="level1"><div class="li"> name, surname, extranames, initials, sex, status, role, stamboeknummer, number, sort, birthday, birthplace, birthcountry, prn, street, streetnr, busnr, postalCode, location, country, email, website, untis, mobilePhone, homePhone, fax, im, website, type_coaccount1, type_coaccount2, naam_coaccount1, naam_coaccount2, voornaam_coaccount1, voornaam_coaccount2, status_coaccount1, status_coaccount2, email_coaccount1, email_coaccount2, telefoonnummer_coaccount1, telefoonnummer_coaccount2, mobielnummer_coaccount1, mobielnummer_coaccount2 (incl. Informatvelden, gorollen)<br>
+<em>Voor de co-accounts loopt de nummering verder (vb. naam_coaccount3, naam_coaacount4, naam_coaccount5 en naam_coaccount6). Zo kan je co-accounts 1 t.e.m. 6 via deze functie beheren.<br>
+De parameter 'gorollen' is enkel bruikbaar voor scholen van het GO!. De mogelijke waarden komen overeen met de taal die in het Gebruikersbeheer wordt gebruikt.</em></div>
+</li>
+<li class="level1 node"><div class="li"> eigen profielvelden</div>
+<ul>
+<li class="level2"><div class="li"> paramName: naam profielveld</div>
+</li>
+<li class="level2"><div class="li"> paramValue: waarde</div>
+</li>
+</ul>
+</li>
+<li class="level1 node"><div class="li"> status co-account</div>
+<ul>
+<li class="level2"><div class="li"> paramName: status_coaccount1..6</div>
+</li>
+<li class="level2"><div class="li"> paramValue: 'actief' of 'niet actief' of 'actief tot en met yyyy/mm/dd'</div>
+</li>
+</ul>
+</li>
+<li class="level1 node"><div class="li"> godsdienstkeuze</div>
+<ul>
+<li class="level2"><div class="li"> paramName: 'Godsdienstkeuze'</div>
+</li>
+<li class="level2"><div class="li"> paramValue: 'MOR' (niet-confessionele zedenleer), 'CAT' (katholieke godsdienst), 'PRO' (protestantse godsdienst), 'ISR' (israëlitische godsdienst), 'ISL' (islamitische godsdienst), 'ORT' (orthodoxe godsdienst), 'ANG' (anglicaanse godsdienst), 'DIS' (vrijgesteld of niet van toepassing), 'CUL' (cultuurbeschouwing), 'PER' (eigen cultuur en religie)</div>
+</li>
+</ul>
+</li>
+<li class="level1 node"><div class="li"> soort leerling</div>
+<ul>
+<li class="level2"><div class="li"> paramName: 'Soort leerling'</div>
+</li>
+<li class="level2 node"><div class="li"> paramValue:</div>
+<ul>
+<li class="level3"><div class="li">  secundair onderwijs: '01' of 'V' (vrije leerling), '02' of 'R' (regelmatig financierbaar), '03' (regelmatig niet financierbaar), '99' (onder voorbehoud aanvaarde leerling)</div>
+</li>
+<li class="level3"><div class="li">  basisonderwijs: '01' (coefficient 1), '02' (coefficient 1,5), '99' (niet financieerbaar)</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level1 node"><div class="li"> nationaliteit</div>
+<ul>
+<li class="level2"><div class="li"> paramName: 'Nationaliteit'</div>
+</li>
+<li class="level2"><div class="li"> paramValue: zie lijst met nationaliteiten binnen het Gebruikersbeheer (binnen het profiel van een willekeurige gebruiker). </div>
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+De functie verwacht 4 parameters:
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$paramName</strong>: Naam parameter</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$paramValue</strong>: Waarde parameter (bij aanvinkvakjes dien je meerdere keuzes te scheiden met een puntkomma)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="saveusertoclass">saveUserToClass</h4>
+<div class="level4">
+
+<p>
+Met deze methode verplaats je de gebruiker naar de (nieuwe) officiële klas. Een leerling kan maar aan één officiële klas gekoppeld worden. De officiele datum kan optioneel worden meegeleverd.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$class</strong>: Unieke klas- of groepscode</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$officialDate</strong>: Officiële datum (optioneel: zonder officiële datum dient de klasbeweging in Smartschool te worden bevestigd; formaat: YYYY-MM-DD)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="saveusertoclasses">saveUserToClasses</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan een gebruiker aan meerdere klassen/groepen gekoppeld worden. De nieuwe klassen en groepen worden aan de bestaande klassen en groepen toegevoegd. In geval van een officiële klas: de leerling zal verwijderd worden uit zijn huidige officiële klas en opnieuw gekoppeld worden aan de officiële klas die wordt meegegeven. De methode vereist 3 parameters:
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$csvList</strong>: CSV-lijst met unieke klas- of groepscode(s)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="saveusertoclassesandgroups">saveUserToClassesAndGroups</h4>
+<div class="level4">
+
+<p>
+Via deze methode is het mogelijk om de lidmaatschappen van de officiële klas, klassen en groepen van een bepaalde gebruiker te bepalen. Het is mogelijk om de nieuwe lidmaatschappen toe te voegen aan de bestaande of om de bestaande lidmaatschappen eerst te verwijderen. Indien er fouten zijn bij de verwerking dan wordt een CSV-bestand met de foutcodes teruggegeven.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord Webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$csvList</strong>: CSV-lijst met unieke klas- of groepscode(s)</div>
+</li>
+<li class="level1"><div class="li"> integer <strong>$keepOld</strong>: ('1' = behoud bestaande lidmaatschappen en voeg nieuwe lidmaatschappen toe, '0' = verwijder oude lidmaatschappen en maak enkel de nieuwe lidmaatschappen)</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="sendmsg">sendMsg</h4>
+<div class="level4">
+
+<p>
+Via deze methode kan je een bericht naar de hoofdaccount of een co-account van een bepaalde gebruiker sturen. Het opgeven van de verzender en/of bijlage is optioneel.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker van de ontvanger</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$title</strong>: Titel van het bericht</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$body</strong>: Tekst van het bericht</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$senderIdentifier</strong>: Uniek veld gebruiker van de verzender</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>$attachments</strong>: Bijlagen (1 of meer) in base64 encoding (optioneel)</div>
+</li>
+<li class="level1"><div class="li"> integer <strong>$coaccount</strong>: Type account ('0' = hoofdaccount, '1' = co-account 1 of '2' = co-account 2 …)<br>
+$coaccount is optioneel: indien dit niet wordt opgegeven dan wordt het bericht naar de hoofdaccount gestuurd.</div>
+</li>
+<li class="level1"><div class="li"> boolean <strong>$copyToLVS</strong>: Waarde 'true' voegt het <a href="javascript:openPage('handleiding:lvs:gebruik:berichten');" class="wikilink1" title="handleiding:lvs:gebruik:berichten">bericht toe aan het LVS</a> (optioneel en standaardwaarde is 'false')</div>
+</li>
+</ul>
+
+<p>
+De array van de bijlagen ziet er in pseudo code als volgt uit:
+</p>
+
+<p>
+[
+['filename' ⇒ 'test1.docx', 'filedata' ⇒ 'base64encoded string']
+['filename' ⇒ 'test2.docx', 'filedata' ⇒ 'base64encoded string']
+]
+</p>
+
+<p>
+Of je kan een JSON-string meegeven met de volgende structuur:
+</p>
+
+<p>
+[<br>
+
+{ “filename”: “test1.docx”, “filedata”: “base64encoded string” },<br>
+
+{ “filename”: “test2.docx”, “filedata”: “base64encoded string” }<br>
+
+]<br>
+
+</p>
+
+</div>
+
+<h4 id="setaccountphoto">setAccountPhoto</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan de foto van de leerling ingevuld worden. Door een 'lege' foto door te sturen kan de foto ook gewist worden. De functie accepteert 3 parameters:
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$photo</strong>: base64encoded photo</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="setaccountstatus">setAccountStatus</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan de status van een leerling gewijzigd worden. De methode vereist 3 parameters:
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker</div>
+</li>
+<li class="level1"><div class="li"> mixed <strong>$accountStatus</strong>: Status account</div>
+</li>
+</ul>
+
+<p>
+Deze laatste parameter kan volgende waarden hebben:
+</p>
+<ul>
+<li class="level1"><div class="li"> 'actief', 'active' of 'enabled' om de account op actief te zetten</div>
+</li>
+<li class="level1"><div class="li"> 'inactief', 'inactive' of 'disabled' om de account uit te schakelen</div>
+</li>
+<li class="level1"><div class="li"> 'administrative' of 'administratief' om van de account een administratieve account te maken.</div>
+</li>
+</ul>
+
+</div>
+
+<h4 id="startskoresync">startSkoreSync</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan de synchronisatie van klassen en leerlingen van Smartschool naar Skore gestart worden. Deze methode levert een JSON-object met daarin de UUID van de synchronisatieopdracht.
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+</ul>
+
+<p>
+Deze opdracht kan slechts één keer per 15 minuten gestart worden.
+</p>
+
+</div>
+
+<h4 id="unregisterstudent">unregisterStudent</h4>
+<div class="level4">
+
+<p>
+Met deze methode kan de leerling worden uitgeschreven. De officiele datum kan optioneel worden meegeleverd. De methode vereist 3 parameters:
+</p>
+<ul>
+<li class="level1"><div class="li"> string <strong>$accesscode</strong>: Wachtwoord webservices</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$userIdentifier</strong>: Uniek veld gebruiker</div>
+</li>
+<li class="level1"><div class="li"> string <strong>$officialDate</strong>: Officiële datum (optioneel: zonder officiële datum dient de klasbeweging in Smartschool te worden bevestigd; formaat: YYYY-MM-DD)</div>
+</li>
+</ul>
+
+</div>
+
+                    <!-- wikipage stop --></div>
+                    </body>
+                    </html>
