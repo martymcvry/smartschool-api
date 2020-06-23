@@ -8,6 +8,24 @@ class SmartschoolConnection implements SmartSOAP {
 		return "https://".self::SMART_PLATFORM."/Webservices/V3?wsdl";
 	}
 	
+	// addCourse
+	function addCourse($strCourseName, $strCourseDescription, $intVisibility = 1) {
+		try {
+			$client = @new SoapClient($this->getURL());
+		} catch (SoapFault $e) {
+			return $e->faultstring();
+		}
+		
+		$data = array(self::SMART_WSP,$strCourseName,$strCourseDescription, $intVisibility);
+		
+		$result = $client->__soapCall("addCourse", $data);
+
+		return $result;
+	}
+	
+	// addCourseStudents
+	
+	
 	// Alle accounts ophalen
 	function getAllAccountsExtended($sGroup) {
 		try {
