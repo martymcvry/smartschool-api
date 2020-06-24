@@ -9,11 +9,17 @@ class SmartschoolConnection implements SmartSOAP {
 	}
 	
 	// addCourse
+	// retourneert boolean TRUE als gelukt, anders string met foutboodschap
 	function addCourse($strCourseName, $strCourseDescription, $intVisibility = 1) {
 		try {
 			$smartClient = new SoapClient($this->getURL());
-			$result = $smartClient->addCourse(self::SMART_WSP, $strCourseName, $strCourseDescription, $intVisibility);
-			return $result;
+			$result = $smartClient->addCourse(self::SMART_WSP, $strCourseName, $strCourseDescription, $intVisibility); // retourneert string(1) "0" bij succes, anders string met foutcode
+			$result = intval($result);
+			if ($result == 0) {
+				return TRUE;
+			} else {
+				return $this->returnErrorCode($result);
+			}
 		} catch (SoapFault $e) {
 			return $e->faultstring();
 		}
@@ -131,7 +137,7 @@ class SmartschoolConnection implements SmartSOAP {
 		$client->__soapCall("sendMsg", array(self::SMART_WSP, $sRecipient, $sTitle, $sBody, $sSender, $aAttachments, $iType));
 	}
 	
-	function returnErrorCodes($iNum) {
+	function returnErrorCode($iNum) {
 		try {
 			$client = @new SoapClient($this->getURL());
 		} catch (SoapFault $e) {
@@ -142,6 +148,19 @@ class SmartschoolConnection implements SmartSOAP {
 		$decoded = json_decode($encoded, TRUE);
 		
 		return $decoded[$iNum];
+	}
+
+	function returnErrorCodes() {
+		try {
+			$client = @new SoapClient($this->getURL());
+		} catch (SoapFault $e) {
+			return $e->faultstring();
+		}
+		
+		$encoded = $client->__soapCall("returnJsonErrorCodes", array());
+		$decoded = json_decode($encoded, TRUE);
+		
+		return $decoded;
 	}
 	
 	function saveUserParameter($sPupilId, $sParamName, $sParamValue) {
