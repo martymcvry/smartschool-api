@@ -26,7 +26,20 @@ class SmartschoolConnection implements SmartSOAP {
 	}
 	
 	// addCourseStudents
-	
+	// retourneert boolean TRUE als gelukt, anders string met foutboodschap
+	function addCourseStudents($strCourseName, $strCourseDescription, $strGroupIds) {
+		try {
+			$smartClient = new SoapClient($this->getURL());
+			$result = $smartClient->addCourseStudents(self::SMART_WSP, $strCourseName, $strCourseDescription, $strGroupIds); // retourneert int 0 bij succes, anders int met foutcode
+			if ($result == 0) {
+				return TRUE;
+			} else {
+				return $this->returnErrorCode($result);
+			}
+		} catch (SoapFault $e) {
+			return $e->faultstring();
+		}
+	}
 	
 	// Alle accounts ophalen
 	function getAllAccountsExtended($sGroup) {
