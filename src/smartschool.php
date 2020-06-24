@@ -11,16 +11,12 @@ class SmartschoolConnection implements SmartSOAP {
 	// addCourse
 	function addCourse($strCourseName, $strCourseDescription, $intVisibility = 1) {
 		try {
-			$client = @new SoapClient($this->getURL());
+			$smartClient = new SoapClient($this->getURL());
+			$result = $smartClient->addCourse(self::SMART_WSP, $strCourseName, $strCourseDescription, $intVisibility);
+			return $result;
 		} catch (SoapFault $e) {
 			return $e->faultstring();
 		}
-		
-		$data = array(self::SMART_WSP,$strCourseName,$strCourseDescription, $intVisibility);
-		
-		$result = $client->__soapCall("addCourse", $data);
-
-		return $result;
 	}
 	
 	// addCourseStudents

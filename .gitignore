@@ -5,3 +5,12 @@ config.php
 
 # test folder
 [Tt]est/
+
+# Dreamweaver files and folders
+# DW Dreamweaver added files
+_notes
+_compareTemp
+configs/
+dwsync.xml
+dw_php_codehinting.config
+*.mno
