@@ -7,9 +7,11 @@
 <h1>Methoden</h1>
 <h2>Overzicht van de methoden</h2>
 <ul>
-  <li> mixed <strong>addCourse</strong> ($strCourseName, $strCourseDesc, $intVisibility)<br>
+  <li>mixed <strong>addCourse</strong> ($strCourseName, $strCourseDesc, $intVisibility)<br>
     <em>$intVisibilityis is optioneel</em> </li>
-  <li> mixed <strong>addCourseStudents</strong> ($strCourseName, $strCourseDesc, $strGroupIds) </li>
+  <li>mixed <strong>addCourseStudents</strong> ($strCourseName, $strCourseDesc, $strGroupIds)</li>
+  <li>mixed <strong>addCourseTeacher</strong> ($strCourseName, $strCourseDesc, $strLeerkrachtId, $strCoLeerkrachtIds)<br>
+<em>$strCoLeerkrachtIds is optioneel</em></li>
 </ul>
 <h2>Detail van de methoden</h2>
 <h3>addCourse</h3>
@@ -27,6 +29,15 @@
   <li> string <strong>$strCourseDesc</strong>: Vakomschrijving </li>
   <li> string <strong>$strGroupIds</strong>: door komma gescheiden CSV-lijst met unieke klas- of groepscode(s) </li>
 </ul>
-<p>Retourneert een boolean 'TRUE' als het vak succesvol is toegevoegd. Als de bewerking mislukt krijg je een string met een foutboodschap.</p>
+<p>Retourneert een boolean 'TRUE' als de leerlingen succesvol gekoppeld werden. Als de bewerking mislukt krijg je een string met een foutboodschap.</p>
+<h3>addCourseTeacher</h3>
+<p>Met deze methode is het mogelijk om bepaalde klassen toe te voegen aan een bepaald vak. Er zijn 3 parameters.</p>
+<ul>
+  <li> string <strong>$strCourseName</strong>: Vaknaam </li>
+  <li> string <strong>$strCourseDesc</strong>: Vakomschrijving</li>
+  <li>string <strong>$strLeerkrachtId</strong>: Uniek veld gebruiker die als hoofdleerkracht wordt toegevoegd</li>
+  <li> string <strong>$strCoLeerkrachtIds</strong>: door komma gescheiden CSV-lijst met uniek veld gebruiker die als co-leerkracht wordt toegevoegd</li>
+</ul>
+<p>Retourneert een boolean 'TRUE' als de leerkracht(en) succesvol gekoppeld werd(en). Als de bewerking mislukt krijg je een string met een foutboodschap.</p>
 </body>
 </html>
