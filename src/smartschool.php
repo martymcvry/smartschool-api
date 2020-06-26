@@ -72,6 +72,22 @@ class SmartschoolConnection implements SmartSOAP {
 			return $e->faultstring();
 		}
 	}
+
+	// changeInternNumber
+	// retourneert boolean TRUE als gelukt, anders string met foutboodschap
+	function changeInternNumber($strUsername, $strNewInternNumber) {
+		try {
+			$smartClient = new SoapClient($this->getURL());
+			$result = $smartClient->changeInternNumber(self::SMART_WSP, $strUsername, $strNewInternNumber); // retourneert int 0 bij succes, anders int met foutcode
+			if ($result == 0) {
+				return TRUE;
+			} else {
+				return $this->returnErrorCode($result);
+			}
+		} catch (SoapFault $e) {
+			return $e->faultstring();
+		}
+	}
 	
 	// Alle accounts ophalen
 	function getAllAccountsExtended($sGroup) {

@@ -11,8 +11,9 @@
     <em>$intVisibilityis is optioneel</em> </li>
   <li>mixed <strong>addCourseStudents</strong> ($strCourseName, $strCourseDesc, $strGroupIds)</li>
   <li>mixed <strong>addCourseTeacher</strong> ($strCourseName, $strCourseDesc, $strLeerkrachtId, $strCoLeerkrachtIds)<br>
-<em>$strCoLeerkrachtIds is optioneel</em></li>
+    <em>$strCoLeerkrachtIds is optioneel</em></li>
   <li>mixed <strong>changeGroupOwners</strong> ($strGroupId, $strUserIds)</li>
+  <li>mixed <strong>changeInternNumber</strong> ($strUsername, $strNewInternNumber)</li>
 </ul>
 <h2>Detail van de methoden</h2>
 <h3>addCourse</h3>
@@ -28,7 +29,7 @@
 <ul>
   <li> string <strong>$strCourseName</strong>: Vaknaam </li>
   <li> string <strong>$strCourseDesc</strong>: Vakomschrijving </li>
-  <li> string <strong>$strGroupIds</strong>: door komma gescheiden CSV-lijst met unieke klas- of groepscode(s) </li>
+  <li> string <strong>$strGroupIds</strong>: Door komma gescheiden CSV-lijst met unieke klas- of groepscode(s) </li>
 </ul>
 <p>Retourneert een boolean 'TRUE' als de leerlingen succesvol gekoppeld werden. Als de bewerking mislukt krijg je een string met een foutboodschap.</p>
 <h3>addCourseTeacher</h3>
@@ -37,15 +38,22 @@
   <li> string <strong>$strCourseName</strong>: Vaknaam </li>
   <li> string <strong>$strCourseDesc</strong>: Vakomschrijving</li>
   <li>string <strong>$strLeerkrachtId</strong>: Uniek veld gebruiker die als hoofdleerkracht wordt toegevoegd</li>
-  <li> string <strong>$strCoLeerkrachtIds</strong>: door komma gescheiden CSV-lijst met uniek veld gebruiker die als co-leerkracht wordt toegevoegd</li>
+  <li> string <strong>$strCoLeerkrachtIds</strong>: Door komma gescheiden CSV-lijst met uniek veld gebruiker die als co-leerkracht wordt toegevoegd</li>
 </ul>
 <p>Retourneert een boolean 'TRUE' als de leerkracht(en) succesvol gekoppeld werd(en). Als de bewerking mislukt krijg je een string met een foutboodschap.</p>
 <h3>changeGroupOwners</h3>
 <p>Met deze methode is het mogelijk om (o.a.) de klastitularissen van een klas te wijzigen. Er zijn 2 parameters:</p>
 <ul>
-<li>string <strong>$strGroupId</strong>: Unieke klas- of groepscode</li>
-<li>string <strong>$strUserIds</strong>: door komma gescheiden CSV-lijst met uniek veld gebruiker die als titularis wordt toegevoegd</li>
+  <li>string <strong>$strGroupId</strong>: Unieke klas- of groepscode</li>
+  <li>string <strong>$strUserIds</strong>: Door komma gescheiden CSV-lijst met uniek veld gebruiker die als titularis wordt toegevoegd</li>
 </ul>
 <p>Retourneert een boolean 'TRUE' als de gebruiker(s) succesvol gekoppeld werd(en). Als de bewerking mislukt krijg je een string met een foutboodschap.</p>
+<h3>changeInternNumber</h3>
+<p>Met deze methode is het mogelijk om het intern nummer van een gebruiker te wijzigen waarbij de gebruikersnaam als sleutelveld fungeert. Er zijn 2 parameters:</p>
+<ul>
+  <li>string <strong>$strUsername</strong>: Gebruikersnaam</li>
+  <li>string <strong>$strNewInternNumber</strong>: Nieuw intern nummer</li>
+</ul>
+<p>Retourneert een boolean 'TRUE' als het intern nummer succesvol gewijzigd werd. Als de bewerking mislukt, krijg je een string met een foutboodschap.</p>
 </body>
 </html>
